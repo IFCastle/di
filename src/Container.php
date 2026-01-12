@@ -179,7 +179,7 @@ class Container implements NestedContainerInterface, DisposableInterface
         $type                   = $key->getDependencyType();
 
         foreach (\array_merge([$key->getDependencyKey()], \is_array($type) ? $type : [$type]) as $key) {
-            if (\array_key_exists($key, $this->container)) {
+            if ($key !== null && \array_key_exists($key, $this->container)) {
                 return $key;
             }
         }
